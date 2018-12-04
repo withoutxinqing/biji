@@ -1,0 +1,133 @@
+复习
+①软件的开发流程（生命周期）
+（1）软件定义期
+	可行性研究阶段
+	需求分析阶段
+（2）软件开发期
+	概要设计阶段
+	详细设计阶段
+	编码实现阶段
+	软件测试阶段
+（3）软件维护期
+	项目部署阶段
+	项目维护阶段
+
+
+②服务器
+学习目标
+	如何在项目中保存数据——数据库——单词
+1.数据库概述
+  数据库（database）:以特定的结构批量存储业务数据的软件。
+  网状数据库
+  层次型数据库
+  非关系型数据库
+  关系型数据库逻辑结构(RDBMS) 
+	Relation Database Manage System
+	Server -> Database -> Table -> Row ->Column
+
+2.MySQL数据库
+	Oracle分支：MySQL
+	Martin分支：MariaDB
+	//xampp是一个服务器的套装，包含了多款开源的服务器，例如MySQL,PHP....
+
+常见的关系型数据库
+SQLite：微型数据库，常用于移动设备
+MySQL：开源中小型数据库，可用于各种操作系统
+PostgreSQL：开源中小型数据库
+SQL Server：Microsoft开发的中型数据库，只用于windows系统
+Oracle：Oracle公司开发的中大型数据库，可用于各种操作系统
+DB2：IMB公司开的中大型数据库，常用于IMB服务器搭配
+
+MySQL部署结构：
+	服务器端软件：负责存储/维护数据——银行总行机房
+	客户端软件：负责向服务器发起增删改查的命令——ATM机
+	（1）服务器端：
+		C:\xampp\mysql\bin\mysqld.exe   启动文件
+		C:\xampp\mysql\data   数据文件——人无法看懂
+	（2）客户端：
+		C:\xampp\mysql\bin\mysql.exe   客户端软件 用来连接服务器端
+	（3）连接MySQL服务器
+		mysql.exe -h127.0.0.1 -P3306 -uroot -p
+		简写形式
+		mysql -uroot
+
+3.常用MySQL管理命令
+	quit：退出服务器的连接
+	show databases：显示服务器上当前所有的数据库
+	use xxxx（数据库名称）：进入指定的数据库
+	show tables：显示当前数据库中所有的数据表
+	desc xxxx（表名称）：描述表中有哪些列
+
+4.MySQL常用的SQL命令
+	SQL：Structured Query Language，结构化查询语言，用于对关系型数据库服务器中的数据进行增删改查的操作。
+	SQL语言最早是由IBM提出，后提交给了ISO，最终成为了数据库行业的标准语言。分为SQL-87，SQL92，SQL-99等，
+当前标准的SQL命令可以被绝大多数的关系型数据库所支持。
+
+	SQL命令的两种执行方式
+	（1）交互模式：客户端输入一行，点击回车，服务器端执行一行。适用于临时性的查看数据。
+		mysql -uroot 回车
+	（2）脚本模式：客户端把要执行的命令写在一个文本文件中，一次性的提交给服务器执行。
+		mysql -uroot < C:/xampp/.../01.sql 回车
+
+	SQL的语法规范
+	（1）每条SQL语句必须以英文的分号结尾（;），一条语句可以跨越当行，见到分号认为语句结束。
+	（2）若第N行语句有错误，则此语句以及后续的语句都不能再执行。
+	（3）SQL命令不区分大小写，习惯上数据库关键字用大写，非关键字用小写。
+	（4）SQL命令可以使用单行注释：#....，和多行注释/*.....*/，注释的代码不会被服务器执行。
+
+	日常开发中常用的SQL命令
+	（1）丢弃指定的数据库，如果存在的话
+		DROP DATABASE IF EXISTS xx（数据库名称）;  DROP丢弃
+	（2）创建新的数据库
+		CREATE DATABASE xx（数据库名称）;   CREATE 创建
+	（3）进入刚刚创建的数据库
+		USE xx（数据库名字）；
+	（4）创建保存数据的表
+		CREATE TABLE xx（表的名称）（
+			sid INT，
+			name VARCHAR(10)，
+			sex VARCHAR(2)，
+			score INT
+		） ; 
+	（5）向表中插入数据
+		INSERT INTO xxx(表的名称) VALUES(表的值)('1','Tom','男','90');
+	（6）查询表中的所有数据
+		SELECT * FROM xxx(表的名称)
+	（7）修改数据
+		UPDATE xxx(表的名称) SET score='66',sex='F' WHERE sid='2';(放在查询的前面)
+	（8）删除数据
+		DELETE FROM xxx(表的名称) WHERE sid='3';(放在查询的前面)
+	（9）乱码
+		SET CHARSET gbk；
+	SQL命令
+	标准SQL语句分类
+		DDL：Data Define Language 定义数据结构
+			CREATE（创建）/DROP（丢弃）/ALTER
+		DML：Data Munipulate Language 操作数据
+			INSERT/DELETE/UPDATE
+		DQL： Data Query Language 查询数据
+			SELECT
+		DCL：Data Control Language 控制用户权限
+			GRANT（授权）/REVOKE（收权）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
